@@ -21,8 +21,10 @@ public class ParticipantController {
         if(participant.isPresent()) {
             Participant rawParticipant = participant.get();
             rawParticipant.setIsConfirmed(true);
+            rawParticipant.setName(payload.name());
 
             repository.save(rawParticipant);
+
             return ResponseEntity.ok(rawParticipant);
         }
         return ResponseEntity.notFound().build();
