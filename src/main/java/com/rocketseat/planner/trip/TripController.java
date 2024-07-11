@@ -1,5 +1,6 @@
 package com.rocketseat.planner.trip;
 
+import com.rocketseat.planner.activities.ActivityData;
 import com.rocketseat.planner.activities.ActivityRequestPayload;
 import com.rocketseat.planner.activities.ActivityResponse;
 import com.rocketseat.planner.activities.ActivityService;
@@ -120,5 +121,12 @@ public class TripController {
             return ResponseEntity.ok(activityResponse);
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("{id}/activities")
+    public ResponseEntity<List<ActivityData>> getAllActivities(@PathVariable UUID id){
+        List<ActivityData> activityDataList = this.activityService.getAllActivitiesFromId(id);
+
+        return ResponseEntity.ok(activityDataList);
     }
 }
