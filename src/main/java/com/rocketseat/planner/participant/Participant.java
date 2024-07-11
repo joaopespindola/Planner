@@ -16,14 +16,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Participant {
-
-    public Participant(String email, Trip trip){
-        this.email = email;
-        this.trip = trip;
-        this.isConfirmed = false;
-        this.name = "";
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -40,4 +32,11 @@ public class Participant {
     @ManyToOne// A Trip can have many Participants
     @JoinColumn(name = "trip_id", nullable = false)
     private Trip trip;
+
+    public Participant(String email, Trip trip){
+        this.email = email;
+        this.trip = trip;
+        this.isConfirmed = false;
+        this.name = "";
+    }
 }
